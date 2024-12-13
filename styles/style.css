@@ -3,11 +3,11 @@
 .page {
   font-family: 'IBM Plex mono', sans-serif;
   font-size: 18px;
-  background-image: url(../images/cover-image-dark.png);
+  background-image: var(--bg-image);
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
-  background-color: #000028;
+  background-color: var(--bg-color);
 }
 
 .header {
@@ -16,7 +16,7 @@
   align-items: flex-end;
   position: relative;
   margin: 10px;
-  color: #ff0070;
+  color: var(--accent-color);
   padding-bottom: 15px;
   padding-top: 60px;
 }
@@ -28,8 +28,8 @@
   right: 0;
   width: 25px;
   height: 25px;
-  border-top: 1px solid #ff0070;
-  border-right: 1px solid #ff0070;
+  border-top: 1px solid var(--title-color);
+  border-right: 1px solid var(--title-color);
 }
 
 .decorated-zone::before {
@@ -39,8 +39,8 @@
   left: 0;
   width: 25px;
   height: 25px;
-  border-left: 1px solid #ff0070;
-  border-bottom: 1px solid #ff0070;
+  border-left: 1px solid var(--title-color);
+  border-bottom: 1px solid var(--title-color);
 }
 
 .header__rec {
@@ -62,9 +62,9 @@
   width: 9px;
   height: 9px;
   display: inline-block;
-  background-color: #ff0070;
+  background-color: var(--accent-color);
   border-radius: 50%;
-  box-shadow: 0px 0px 4px 2px #FF0070;
+  box-shadow: 0px 0px 4px 2px var(--accent-color);
   margin-right: 10px;
 }
 
@@ -74,31 +74,33 @@
   font-size: 18px;
   line-height: 18px;
   background-color: transparent;
-  color: #ff0070;
+  color: var(--title-color);
   border: none;
   padding: 8px 13px;
   text-transform: lowercase;
+  cursor: pointer;
 }
 
-.header__theme-menu-button[disabled] {
-  border: 1px solid #ff0070;
+.header__theme-menu-button_active {
+  border: 1px solid var(--title-color);
+  pointer-events: none;
 }
 
 .header__title {
   align-self: flex-start;
-  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.75rem);
-  line-height: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.75rem);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   font-weight: 700;
-  color: #db00ff;
-  text-shadow: 4px 4px 0 #ff0070;
+  color: var(--header-color);
+  text-shadow: 4px 4px 0 var(--accent-color);
 }
 
 .title-decor {
   font-size: 18px;
   font-weight: 700;
   line-height: 23px;
-  color: #000028;
-  background-color: #ff0070;
+  color: var(--bg-color);
+  background-color: var(--accent-color);
 }
 
 .header__text {
@@ -111,7 +113,7 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 23px;
-  color: #ff0070;
+  color: var(--title-color);
   margin-bottom: 20px;
 }
 
@@ -128,15 +130,15 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 23px;
-  color: #f1b2ce;
+  color: var(--text-color);
 }
 
 .advice__title {
   font-size: 18px;
   font-weight: 400;
   line-height: 23px;
-  color: #000028;
-  background-color: #ff0070;
+  color: var(--bg-color);
+  background-color: var(--accent-color);
   margin-top: 20px;
   margin-bottom: 10px;
 }
@@ -153,19 +155,20 @@
 }
 
 .footer__text {
-  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.75rem);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   font-weight: 700;
-  color: #db00ff;
-  text-shadow: 2px 2px 0 #ff0070;
+  color: var(--header-color);
+  text-shadow: 2px 2px 0 var(--accent-color);
   padding-top: 200px;
   padding-bottom: 200px;
-  margin: 0;
+  text-align: center;
 }
 
 .link {
   color: inherit;
-  text-underline-offset: 4px;
-  text-shadow: 2px 1px #ff0070;
+  /* text-underline-offset: 4px; */
+  text-decoration: none;
+  text-shadow: 2px 1px var(--accent-color);
 }
 
 .gallery_item__sunset {
@@ -241,8 +244,37 @@
   }
 }
 
+.theme_light .header__rec {
+  display: none; 
+}
+
+@media (prefers-color-scheme: light) {
+  .theme_auto .header__rec {
+    display: none;
+  }
+}
+
 @media (width >= 1024px) {
   .header__text {
     max-width: 470px;
+  }
+  
+  .header {
+    padding-top: 0;
+  }
+
+  .header__theme-menu {
+    align-self: center;
+    margin-bottom: 300px;
+  }
+
+  .header__theme-menu-list {
+    display: flex;
+  }
+
+  .section-3-columns ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
 }
