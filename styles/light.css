@@ -11,6 +11,7 @@
   --text-color: #353430;
   --header-color: #ffc2e6;
   --title-color: #353430;
+  --btn-hover-color: rgba(50, 49, 45, 0.4);
 }
 
 @media (prefers-color-scheme: light) {
@@ -21,5 +22,6 @@
     --text-color: #353430;
     --header-color: #ffc2e6;
     --title-color: #353430;
+    --btn-hover-color: rgba(50, 49, 45, 0.4);
   }
 }

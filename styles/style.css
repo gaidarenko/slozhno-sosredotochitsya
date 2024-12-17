@@ -11,14 +11,14 @@
 }
 
 .header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+  align-items: center;
+  justify-items: end;
   position: relative;
   margin: 10px;
   color: var(--accent-color);
-  padding-bottom: 15px;
-  padding-top: 60px;
+  min-height: calc(100vh - 20px);
 }
 
 .decorated-zone::after {
@@ -75,10 +75,19 @@
   line-height: 18px;
   background-color: transparent;
   color: var(--title-color);
-  border: none;
+  border: 1px solid transparent;
   padding: 8px 13px;
   text-transform: lowercase;
   cursor: pointer;
+}
+
+.header__theme-menu-button:hover {
+  border: 1px solid var(--btn-hover-color);
+}
+
+.header__theme-menu-button:focus-visible {
+  outline: none;
+  border-bottom: 1px solid var(--title-color);
 }
 
 .header__theme-menu-button_active {
@@ -87,7 +96,7 @@
 }
 
 .header__title {
-  align-self: flex-start;
+  margin-right: auto;
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   line-height: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   font-weight: 700;
@@ -104,8 +113,6 @@
 }
 
 .header__text {
-  margin-top: 55px;
-  margin-bottom: 56px;
   max-width: 364px;
 }
 
@@ -150,7 +157,9 @@
 }
 
 .footer {
+  min-height: calc(100vh - 20px);
   position: relative;
+  display: flex;
   margin: 50px 10px 10px 10px;
 }
 
@@ -159,16 +168,21 @@
   font-weight: 700;
   color: var(--header-color);
   text-shadow: 2px 2px 0 var(--accent-color);
-  padding-top: 200px;
-  padding-bottom: 200px;
-  text-align: center;
+  margin: auto;
 }
 
 .link {
   color: inherit;
-  /* text-underline-offset: 4px; */
   text-decoration: none;
   text-shadow: 2px 1px var(--accent-color);
+}
+
+.link:focus-visible {
+  outline: 1px solid var(--text-color);
+}
+
+.link:hover {
+  text-decoration: underline solid var(--text-color);
 }
 
 .gallery_item__sunset {
@@ -194,14 +208,18 @@
 @media (width >= 768px) {
   .header {
     margin: 20px;
-    padding-top: 172px;
-    padding-bottom: 163px;
+    min-height: calc(100vh - 40px);
   }
 
   .header__title {
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
 
+  .footer {
+    min-height: calc(100vh - 40px);
+    margin: 50px 20px 20px 20px;
+  }
+  
   .section {
     margin: 100px 20px 0 20px;
   }
@@ -258,14 +276,11 @@
   .header__text {
     max-width: 470px;
   }
-  
-  .header {
-    padding-top: 0;
-  }
 
   .header__theme-menu {
-    align-self: center;
-    margin-bottom: 300px;
+    align-self: start;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .header__theme-menu-list {
